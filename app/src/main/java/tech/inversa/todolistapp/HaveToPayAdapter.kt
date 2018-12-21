@@ -37,6 +37,7 @@ class HaveToPayAdapter(var todoList: List<HaveTo>? = ArrayList<HaveTo>()): Recyc
     class ViewHolder(val vista: View, val todoList: List<HaveTo>): RecyclerView.ViewHolder(vista) {
         fun onBindViews(position: Int) {
             vista.findViewById<TextView>(R.id.tvTitulo).text = todoList.get(position).asunto
+            vista.findViewById<TextView>(R.id.tvComentario).text = todoList.get(position).detalle
 //            vista.findViewById<TextView>(R.id.tvPrimeraLetra).text = todoList.get(position).asunto.first().toUpperCase().toString()
         }
     }

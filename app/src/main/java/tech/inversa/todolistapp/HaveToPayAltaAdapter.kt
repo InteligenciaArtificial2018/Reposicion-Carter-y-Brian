@@ -31,12 +31,13 @@ class HaveToPayAltaAdapter(var todoList: List<HaveToAlta>? = ArrayList<HaveToAlt
             onHaveToAltaItemClickListener?.onHaveToAltaItemLongClickListener(todoList?.get(position)!!)
             true
         }
-//        holder.onBindViews(position)
+        holder.onBindViews(position)
     }
 
     class ViewHolder(val vista: View, val todoList: List<HaveToAlta>): RecyclerView.ViewHolder(vista) {
         fun onBindViews(position: Int) {
             vista.findViewById<TextView>(R.id.tvTitulo).text = todoList.get(position).titulo
+            vista.findViewById<TextView>(R.id.tvComentario).text = todoList.get(position).comentario
 //            vista.findViewById<TextView>(R.id.tvPrimeraLetra).text = todoList.get(position).asunto.first().toUpperCase().toString()
         }
     }

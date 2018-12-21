@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 
-@Database(entities = [HaveTo::class, HaveToMedia::class, HaveToAlta::class, HaveToBaja::class], version = 12, exportSchema = true)
+@Database(entities = [HaveTo::class, HaveToMedia::class, HaveToAlta::class, HaveToBaja::class], version = 13, exportSchema = true)
 abstract class HaveToPayDatabase: RoomDatabase() {
     /**
      * Este es un método abstracto que retorna el DAO para la base de datos.

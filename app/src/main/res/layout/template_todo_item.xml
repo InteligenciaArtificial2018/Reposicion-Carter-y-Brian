@@ -28,6 +28,7 @@
             </FrameLayout>
             <TextView
                     android:text="Titulo de la tarea"
+                    android:textSize="20dp"
                     android:layout_width="0dp"
                     android:layout_height="25dp" android:id="@+id/tvTitulo"
                     app:layout_constraintTop_toTopOf="parent"
