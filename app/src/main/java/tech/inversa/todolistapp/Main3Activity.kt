@@ -13,19 +13,21 @@ import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import tech.inversa.todolistapp.data.HaveToPayDatabase
-import tech.inversa.todolistapp.data.HaveTo
+import tech.inversa.todolistapp.data.HaveToAlta
 
-class MainActivity : AppCompatActivity(), HaveToPayAdapter.OnHaveToItemClickListener {
+class Main3Activity : AppCompatActivity(), HaveToPayAltaAdapter.OnHaveToAltaItemClickListener {
     private var haveDatabase: HaveToPayDatabase? = null
-    private var haveAdapter: HaveToPayAdapter? = null
+    private var haveAdapter: HaveToPayAltaAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main3)
+
+        Toast.makeText(this,"Categoria Alta",Toast.LENGTH_SHORT).show()
 
         haveDatabase = HaveToPayDatabase.getInstance(this)
-        haveAdapter  = HaveToPayAdapter(haveDatabase?.getHaveToDao()?.getHaveList())
-        haveAdapter?.setHaveToItemClickListener(this)
+        haveAdapter  = HaveToPayAltaAdapter(haveDatabase?.getHaveToAltaDao()?.getHaveList())
+        haveAdapter?.setHaveToAltaItemClickListener(this)
 
         // Llamar la activity de agregar tarea mediante el floating action button
         fabAddToDo.setOnClickListener {
@@ -52,16 +54,17 @@ class MainActivity : AppCompatActivity(), HaveToPayAdapter.OnHaveToItemClickList
             }
             R.id.opCategoriaAlta->{
 
-                startActivity(Intent(this, Main4Activity::class.java))
+                startActivity(Intent(this, Main3Activity::class.java))
                 return super.onOptionsItemSelected(item)
             }
             else -> return super.onOptionsItemSelected(item)
         }
     }
 
+
     override fun onResume() {
         super.onResume()
-        haveAdapter?.todoList = haveDatabase?.getHaveToDao()?.getHaveList()
+        haveAdapter?.todoList = haveDatabase?.getHaveToAltaDao()?.getHaveList()
         rvToDo.adapter = haveAdapter
         rvToDo.layoutManager = LinearLayoutManager(this)
         rvToDo.hasFixedSize()
@@ -72,15 +75,19 @@ class MainActivity : AppCompatActivity(), HaveToPayAdapter.OnHaveToItemClickList
      * del TodoAdapter. Enviamos la información mediante un intent con parámetros
      * hacia el layout correspondiente.
      */
-    override fun onHaveToItemClickListener(todo: HaveTo) {
+    override fun onHaveToAltaItemClickListener(haveToAlta: HaveToAlta) {
         val intent = Intent(this, HaveToPayAgregarActivity::class.java)
-        intent.putExtra("id", todo.id)
-        intent.putExtra("asunto", todo.asunto)
-        intent.putExtra("detalle", todo.detalle)
+        intent.putExtra("id", haveToAlta.id)
+        intent.putExtra("titulo", haveToAlta.titulo)
+        intent.putExtra("descripcion", haveToAlta.descripcion)
+        intent.putExtra("categoria", haveToAlta.categoria)
+        intent.putExtra("fecha", haveToAlta.fecha)
+        intent.putExtra("hora", haveToAlta.hora)
+        intent.putExtra("comentario", haveToAlta.comentario)
         startActivity(intent)
     }
 
-    override fun onHaveToItemLongClickListener(todo: HaveTo) {
+    override fun onHaveToAltaItemLongClickListener(haveToAlta: HaveToAlta) {
         // Inicializar una nueva instancia de AlertDialog
         val builder = AlertDialog.Builder(this)
 
@@ -95,15 +102,19 @@ class MainActivity : AppCompatActivity(), HaveToPayAdapter.OnHaveToItemClickList
         builder.setPositiveButton(R.string.modificar) {dialog, wich ->
             // Realizar el llamado a la activity de agregar enviando los valores mediante el intent
             val intent = Intent(this, HaveToPayAgregarActivity::class.java)
-            intent.putExtra("id", todo.id)
-            intent.putExtra("asunto", todo.asunto)
-            intent.putExtra("detalle", todo.detalle)
+            intent.putExtra("id", haveToAlta.id)
+            intent.putExtra("titulo", haveToAlta.titulo)
+            intent.putExtra("descripcion", haveToAlta.descripcion)
+            intent.putExtra("categoria", haveToAlta.categoria)
+            intent.putExtra("fecha", haveToAlta.fecha)
+            intent.putExtra("hora", haveToAlta.hora)
+            intent.putExtra("comentario", haveToAlta.comentario)
 
             startActivity(intent)
         }
 
         builder.setNegativeButton(R.string.eliminar) {dialog, which ->
-            haveDatabase?.getHaveToDao()?.deleteTodo(todo)
+            haveDatabase?.getHaveToAltaDao()?.deleteTodo(haveToAlta)
             onResume()
             Toast.makeText(this, R.string.mensajetareaEliminada, Toast.LENGTH_SHORT).show()
         }

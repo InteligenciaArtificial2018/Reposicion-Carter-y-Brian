@@ -5,11 +5,12 @@
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
-            android:label="Have To Pay"
+            android:label="Notas2 2.O Remasterizado"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Main2Activity"
+                    android:label="Notas2 Vol 2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -18,9 +19,18 @@
         </activity>
         <activity
                 android:name=".HaveToPayAgregarActivity"
-                android:label="Agregar Pago">
+                android:label="Agregar Nota">
         </activity>
-        <activity android:name=".time">
+        <activity android:name=".time"
+                   android:label="Baja Categoria" >
+        </activity>
+        <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".Main3Activity"
+                    android:label="Categoria Alta">
+        </activity>
+        <activity android:name=".Main4Activity"
+                    android:label="Categoria Media ">
         </activity>
     </application>
 

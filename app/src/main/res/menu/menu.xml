@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <menu xmlns:android="http://schemas.android.com/apk/res/android">
-        <item android:id="@+id/opTodo" android:title="Todo"></item>
         <item android:id="@+id/opCategoriaBaja" android:title="Categoria baja"></item>
         <item android:id="@+id/opCategoriaMedia" android:title="Categoria media"></item>
         <item android:id="@+id/opCategoriaAlta" android:title="Categoria alta"></item>

@@ -5,12 +5,15 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 
-@Database(entities = [HaveTo::class], version = 2, exportSchema = false)
+@Database(entities = [HaveTo::class, HaveToMedia::class, HaveToAlta::class, HaveToBaja::class], version = 12, exportSchema = true)
 abstract class HaveToPayDatabase: RoomDatabase() {
     /**
      * Este es un método abstracto que retorna el DAO para la base de datos.
      */
     abstract fun getHaveToDao(): HaveToPayDao
+    abstract fun getHaveToBajaDao(): HaveToPayBajaDao
+    abstract fun getHaveToMediaDao(): HaveToPayMediaDao
+    abstract fun getHaveToAltaDao(): HaveToPayAltaDao
 
     /**
      * Un patrón de diseño Singleton es utilizado para asegurarnos que

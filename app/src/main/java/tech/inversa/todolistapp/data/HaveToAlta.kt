@@ -4,7 +4,7 @@ import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
-@Entity(tableName = "categoriaBaja")
+@Entity(tableName = "categoriaAlta")
 class HaveToAlta(
     @ColumnInfo(name = "titulo")
     var titulo: String = "",

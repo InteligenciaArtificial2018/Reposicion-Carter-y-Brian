@@ -7,34 +7,34 @@ interface HaveToPayBajaDao {
     /**
      * Retorna todos las tuplas de Todo en orden ascendente.
      */
-    @Query("SELECT * FROM todo ORDER BY id ASC")
+    @Query("SELECT * FROM categoriaBaja ORDER BY id ASC")
     fun getHaveList(): List<HaveToBaja>
 
     /**
      * Retorna una tupla desde la tabla todo
      * @param id el valor de la llave primaria a retornar.
      */
-    @Query("SELECT * FROM todo WHERE id = :id")
+    @Query("SELECT * FROM categoriaBaja WHERE id = :id")
     fun getTodoItem(id: Int): HaveToBaja
 
     /**
      * Inserta una nueva tupla en la tabla todo.
-     * @param todo la tupla a insertar en la tabla.
+     * @param categoriaBaja la tupla a insertar en la tabla.
      */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun saveTodo(todo: HaveToBaja)
+    fun saveTodo(categoriaBaja: HaveToBaja)
 
     /**
      * Actualiza una tupla en la tabla todo.
-     * @param todo el valor de la tupla a actualizar.
+     * @param categoriaBaja el valor de la tupla a actualizar.
      */
     @Update
-    fun updateTodo(todo: HaveToBaja)
+    fun updateTodo(categoriaBaja: HaveToBaja)
 
     /**
      * Remueve una tupla de la tabla todo.
-     * @param todo el valor de la tupla a remover.
+     * @param categoriaBaja el valor de la tupla a remover.
      */
     @Delete
-    fun deleteTodo(todo: HaveToBaja)
+    fun deleteTodo(categoriaBaja: HaveToBaja)
 }
