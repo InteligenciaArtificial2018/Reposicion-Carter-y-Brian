@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="tech.inversa.todolistapp">
 
-    <uses-permission android:name="android.permission.SET_ALARM"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <application
             android:allowBackup="true"
@@ -22,6 +22,9 @@
         <activity
                 android:name=".HaveToPayAgregarActivity"
                 android:label="Agregar Nota">
+                <intent-filter>
+                    <action android:name="android.intent.action.SET_ALARM"/>
+                 </intent-filter>
         </activity>
         <activity android:name=".time"
                    android:label="Baja Categoria" >

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.support.annotation.RequiresApi
 import android.view.View
 import android.widget.*
@@ -60,18 +61,39 @@ class HaveToPayAgregarActivity : AppCompatActivity(){
                 if(textView.text == "Baja"){
                     val tarea = HaveToBaja(etTitulo.text.toString(), etDescripcion.text.toString(), textView.text.toString(), edDate.text.toString(), edTime.text.toString(), etDescripcion.text.toString())
                     todoDatabase?.getHaveToBajaDao()?.saveTodo(tarea)
+
+                    var horaCompleta = edTime.text.toString()
+
+                    var separada = horaCompleta.split(":")
+                    var hora = separada[0].toInt()
+                    var minutos= separada[1].toInt()
+                    establecerAlarma(etTitulo.text.toString(), hora, minutos);
                     finish()
                 }
                 else if (textView.text == "Media")
                 {
                     val tarea = HaveToMedia(etTitulo.text.toString(), etDescripcion.text.toString(), textView.text.toString(), edDate.text.toString(), edTime.text.toString(), etDescripcion.text.toString())
                     todoDatabase?.getHaveToMediaDao()?.saveTodo(tarea)
+                    var horaCompleta = edTime.text.toString()
+
+                    var separada = horaCompleta.split(":")
+                    var hora = separada[0].toInt()
+                    var minutos= separada[1].toInt()
+                    establecerAlarma(etTitulo.text.toString(), hora, minutos);
+                    finish()
                     finish()
                 }
                 else if (textView.text == "Alta"){
 
                     val tarea = HaveToAlta(etTitulo.text.toString(), etDescripcion.text.toString(), textView.text.toString(), edDate.text.toString(), edTime.text.toString(), etDescripcion.text.toString())
                     todoDatabase?.getHaveToAltaDao()?.saveTodo(tarea)
+                    var horaCompleta = edTime.text.toString()
+
+                    var separada = horaCompleta.split(":")
+                    var hora = separada[0].toInt()
+                    var minutos= separada[1].toInt()
+                    establecerAlarma(etTitulo.text.toString(), hora, minutos);
+                    finish()
                     finish()
                 }
             }
@@ -82,30 +104,73 @@ class HaveToPayAgregarActivity : AppCompatActivity(){
             etDescripcion.setText(detalle)
             btnAgregarTarea.setOnClickListener {
                 if(textView.text == "Baja"){
+
                     val tarea = HaveToBaja(etTitulo.text.toString(), etDescripcion.text.toString(), textView.text.toString(), edDate.text.toString(), edTime.text.toString(), etDescripcion.text.toString())
                     tarea.id = id
                     todoDatabase?.getHaveToBajaDao()?.updateTodo(tarea)
+
+                    var horaCompleta = edTime.text.toString()
+
+                    var separada = horaCompleta.split(":")
+                    var hora = separada[0].toInt()
+                    var minutos= separada[1].toInt()
+                    establecerAlarma(etTitulo.text.toString(), hora, minutos);
+                    finish()
+
                     finish()
                 }
                 else if (textView.text == "Media"){
                     val tarea = HaveToMedia(etTitulo.text.toString(), etDescripcion.text.toString(), textView.text.toString(), edDate.text.toString(), edTime.text.toString(), etDescripcion.text.toString())
                     tarea.id = id
                     todoDatabase?.getHaveToMediaDao()?.updateTodo(tarea)
+                    var horaCompleta = edTime.text.toString()
+
+                    var separada = horaCompleta.split(":")
+                    var hora = separada[0].toInt()
+                    var minutos= separada[1].toInt()
+                    establecerAlarma(etTitulo.text.toString(), hora, minutos);
+                    finish()
                     finish()
                 }
                 else if (textView.text == "Alta"){
                     val tarea = HaveToAlta(etTitulo.text.toString(), etDescripcion.text.toString(), textView.text.toString(), edDate.text.toString(), edTime.text.toString(), etDescripcion.text.toString())
                     tarea.id = id
                     todoDatabase?.getHaveToAltaDao()?.updateTodo(tarea)
+                    var horaCompleta = edTime.text.toString()
+
+                    var separada = horaCompleta.split(":")
+                    var hora = separada[0].toInt()
+                    var minutos= separada[1].toInt()
+                    establecerAlarma(etTitulo.text.toString(), hora, minutos);
+                    finish()
                     finish()
                 }
 
             }
         }
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    fun establecerAlarma(etiqueta: String, hora: Int, minutos: Int)
+    {
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM)
+            .putExtra(AlarmClock.EXTRA_MESSAGE, etiqueta)
+            .putExtra(AlarmClock.EXTRA_ALARM_SEARCH_MODE, AlarmClock.ALARM_SEARCH_MODE_TIME)
+            .putExtra(AlarmClock.EXTRA_HOUR, hora)
+            .putExtra(AlarmClock.EXTRA_MINUTES, minutos)
+
+
+
+        if (intent.resolveActivity(packageManager)!=null){
+            Toast.makeText(this, "Actividad Establecida", Toast.LENGTH_SHORT).show()
+            startActivity(intent)
+        }
+
     }
 }
