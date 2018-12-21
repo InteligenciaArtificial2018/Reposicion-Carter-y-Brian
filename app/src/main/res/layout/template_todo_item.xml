@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="80dp" android:padding="5dp" android:clickable="true"
+                android:longClickable="true" android:background="?android:attr/selectableItemBackground">
+
+    <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" app:cardCornerRadius="5dp" app:contentPadding="3dp">
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <FrameLayout
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" android:id="@+id/frameLayout">
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" app:srcCompat="@drawable/high_priority"
+                        android:id="@+id/ivPrioridad"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tvPrimeraLetra" tools:text="A"
+                        android:textColor="@color/colorGray" android:textSize="20sp" android:layout_gravity="center"/>
+            </FrameLayout>
+            <TextView
+                    android:text="Titulo de la tarea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:id="@+id/tvTitulo"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frameLayout" android:layout_marginStart="24dp"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

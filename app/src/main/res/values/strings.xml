@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TodoListApp</string>
+    <string name="title_activity_to_do_add">Agregar un pago</string>
+    <string name="hintTitulo">Titulo del pago</string>
+    <string name="hintDescripcion">Cada cuanto pagar</string>
+    <string name="hintFechaInicial">Fecha donde inicial el pago</string>
+    <string name="hintMonto">Cuanto pagar</string>
+    <string name="rbBaja">Baja</string>
+    <string name="rbMedia">Media</string>
+    <string name="rbAlta">Alta</string>
+    <string name="btnAgregarTarea">Agregar pago</string>
+    <string name="tituloDialogoLongClick">Elija una acción</string>
+    <string name="mensajeDialogoLongClick">¿Qué desea realizar con el pago seleccionado?</string>
+    <string name="modificar">Modificar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="mensajeCancelarDialogoLongClick">No se han realizado cambios en el pago</string>
+    <string name="mensajetareaEliminada">pAGO satisfactoriamente</string>
+</resources>
